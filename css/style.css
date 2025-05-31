@@ -710,7 +710,7 @@ body::before {
 
 .special-header {
     text-align: center;
-    padding: 0.5rem 0 0;
+    padding: 7.5rem 0 0.6rem;
     position: relative;
     z-index: 10;
     width: 100%;
@@ -748,7 +748,7 @@ body::before {
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 0;
     position: relative;
     height: 750px;
     background: #132B4B;
@@ -1201,5 +1201,270 @@ body::before {
 
 .learn-more:hover {
     transform: translateY(-3px);
+}
+  
+
+/* Updated CSS for Numbers Section */
+.numbers-section {
+    background: linear-gradient(to bottom, #2A7DAC 0%, #132B4B 100%);
+    color: white;
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 3;
+    min-height: 100vh;
+  }
+  
+.numbers-header h1 {
+    font-family: 'Noto Serif', serif;
+    font-size: 50px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: #FFFFFF;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 10;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .isi-report-button {
+    text-align: center;
+    margin-bottom: 6rem;
+    margin-top: 0;
+    z-index: 10;
+    position: relative;
+  }
+  
+  .numbers-content-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .numbers-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+  }
+  
+  .stat-card {
+    background: #132B4B;
+    padding: 2rem 1.5rem;
+    border-radius: 10px;
+    min-width: 140px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  .stat-card:hover,
+  .stat-card.active {
+    background: #132B4B;
+    border-color: #ffffff;
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 0 2px #ffffff;
+  }
+  
+  .stat-card:hover h3,
+  .stat-card.active h3 {
+    color: #ffffff;
+  }
+  
+  .stat-card:hover .stat-icon img,
+  .stat-card.active .stat-icon img {
+    filter: brightness(0) invert(1);
+  }
+  
+  .stat-icon img {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 1rem;
+    filter: invert(27%) sepia(74%) saturate(1200%) hue-rotate(190deg) brightness(95%) contrast(85%);
+    transition: all 0.3s ease;
+  }
+  
+  .stat-card h3 {
+    font-size: 0.85rem;
+    letter-spacing: 1.4px;
+    font-family: 'Figtree', sans-serif;
+    color: #A1C9E7;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  
+  .dotted-line {
+    width: 100%;
+    height: 2px;
+    background: repeating-linear-gradient(to right, white 0, white 5px, transparent 5px, transparent 10px);
+    position: absolute;
+    top: -10px;
+    left: 0;
+    z-index: 5;
+  }
+  
+  .image-navigation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 10rem;
+    position: relative;
+    z-index: 8;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .main-image-container {
+    width: 1500px;
+    height: 900px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  }
+  
+  .main-image {
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .stat-detail {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    
+    z-index: 20;
+    color: white;
+  }
+  
+  .stat-detail h2 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Noto Serif', serif;
+  }
+  
+  .stat-detail p {
+    font-size: 1.1rem;
+    font-family: 'Figtree', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  .slider-nav {
+    width: 42px;
+    height: 42px;
+    border: 2px solid white;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 10;
+  }
+  
+  .slider-nav:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    transform: scale(1.05);
+  }
+  
+
+ 
+  
+  @media (max-width: 768px) {
+    .numbers-cards {
+      flex-wrap: wrap;
+      position: static;
+      transform: none;
+      margin-top: 2rem;
+    }
+  
+    .image-navigation-container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .main-image-container {
+      width: 100vw;
+      height: 60vh;
+    }
+  
+    .stat-detail {
+      position: static;
+      margin-top: 2rem;
+    }
+
+    .numbers-dotted-line {
+      width: 100vw;
+      height: 1px;
+    }
+  }
+  .numbers-dotted-line {
+    position: absolute;
+    top: 33.5%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100vw;
+    height: 3px;
+    background-image: repeating-linear-gradient(
+      to right,
+      #2A7DAC,
+      #2A7DAC 9px,
+      transparent 6px,
+      transparent 12px
+    );
+    opacity: 0.8;
+    z-index: 8;
+    pointer-events: none;
+  }
+  
+/* Numbers section tower logos */
+.numbers-tower-logo-left {
+    position: absolute;
+    top: 50%;
+    left: -150px;
+    transform: translateY(-50%);
+    width: 1200px;
+    height: 1200px;
+    background: url('../assets/tower-logo.svg') no-repeat center center;
+    background-size: contain;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.numbers-tower-logo-right {
+    position: absolute;
+    top: 50%;
+    right: -150px;
+    transform: translateY(-50%);
+    width: 1200px;
+    height: 1200px;
+    background: url('../assets/tower-logo.svg') no-repeat center center;
+    background-size: contain;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 2;
 }
   

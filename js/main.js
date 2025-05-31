@@ -114,9 +114,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const titleElement = document.querySelector('.about-content h2');
     const contentElement = document.querySelector('.about-content p');
     const imageElement = document.querySelector('.about-image img');
-    const dots = document.querySelectorAll('.dot');
-    const prevButton = document.querySelector('.slider-nav.prev');
-    const nextButton = document.querySelector('.slider-nav.next');
+    const dots = document.querySelectorAll('.special-section .dot');
+    const prevButton = document.querySelector('.about-content-slider .slider-nav.prev');
+    const nextButton = document.querySelector('.about-content-slider .slider-nav.next');
 
     // Update slide content
     function updateSlide(index) {
@@ -154,15 +154,119 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Numbers Section Functionality
+    const numbersStats = {
+        achievement: {
+            number: "98%",
+            description: "Students achieve their<br>target grades or above",
+            image: "assets/students-stairs-university.jpg"
+        },
+        sport: {
+            number: "15",
+            description: "Different sports offered<br>throughout the year",
+            image: "assets/confident-young-man-with-backpack.jpg"
+        },
+        concerts: {
+            number: "4",
+            description: "Concerts to be held<br>at school this year",
+            image: "assets/student-leaving-school-after-classes.jpg"
+        },
+        location: {
+            number: "2",
+            description: "Minutes walk from<br>Richmond Station",
+            image: "assets/students-outside-university.jpg"
+        },
+        facilities: {
+            number: "25",
+            description: "State-of-the-art<br>facilities available",
+            image: "assets/youngsters-with-notepads.jpg"
+        }
+    };
+
+    let currentNumbersStat = 'concerts'; // Default to concerts as shown in image
+    const statCards = document.querySelectorAll('.stat-card');
+    const numbersDots = document.querySelectorAll('.numbers-section .dot');
+    const numbersNavPrev = document.querySelector('.numbers-section .slider-nav.prev');
+    const numbersNavNext = document.querySelector('.numbers-section .slider-nav.next');
+    const statNumber = document.getElementById('stat-number');
+    const statDescription = document.getElementById('stat-description');
+    const mainCategoryImage = document.getElementById('main-category-image');
+
+    // Update numbers display
+    function updateNumbersDisplay(statType) {
+        if (numbersStats[statType] && statNumber && statDescription) {
+            statNumber.textContent = numbersStats[statType].number;
+            statDescription.innerHTML = numbersStats[statType].description;
+            
+            // Update the main image
+            if (mainCategoryImage) {
+                mainCategoryImage.src = numbersStats[statType].image;
+                mainCategoryImage.alt = `${statType} at Tower House School`;
+            }
+        }
+
+        // Update active states
+        statCards.forEach(card => {
+            card.classList.toggle('active', card.getAttribute('data-stat') === statType);
+        });
+
+        numbersDots.forEach(dot => {
+            dot.classList.toggle('active', dot.getAttribute('data-stat') === statType);
+        });
+
+        currentNumbersStat = statType;
+    }
+
+    // Stat card click handlers
+    statCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const statType = card.getAttribute('data-stat');
+            updateNumbersDisplay(statType);
+        });
+    });
+
+    // Numbers dots click handlers
+    numbersDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const statType = dot.getAttribute('data-stat');
+            updateNumbersDisplay(statType);
+        });
+    });
+
+    // Numbers navigation functionality
+    const statsOrder = ['achievement', 'sport', 'concerts', 'location', 'facilities'];
+    
+    function getNextStat() {
+        const currentIndex = statsOrder.indexOf(currentNumbersStat);
+        return statsOrder[(currentIndex + 1) % statsOrder.length];
+    }
+
+    function getPrevStat() {
+        const currentIndex = statsOrder.indexOf(currentNumbersStat);
+        return statsOrder[(currentIndex - 1 + statsOrder.length) % statsOrder.length];
+    }
+
+    if (numbersNavNext) {
+        numbersNavNext.addEventListener('click', () => {
+            updateNumbersDisplay(getNextStat());
+        });
+    }
+
+    if (numbersNavPrev) {
+        numbersNavPrev.addEventListener('click', () => {
+            updateNumbersDisplay(getPrevStat());
+        });
+    }
+
     // LEARN MORE button functionality
     const learnMoreBtn = document.querySelector('.learn-more');
     if (learnMoreBtn) {
         learnMoreBtn.addEventListener('click', () => {
             console.log('Learn more about:', slides[currentSlide].title);
-            // Scroll to ISI report section
-            const nextSection = document.querySelector('.isi-report-section');
-            if (nextSection) {
-                nextSection.scrollIntoView({ behavior: 'smooth' });
+            // Scroll to numbers section
+            const numbersSection = document.querySelector('.numbers-section');
+            if (numbersSection) {
+                numbersSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
     }
