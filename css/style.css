@@ -124,7 +124,7 @@ h1, h2, h3, h4, h5, h6 {
 .menu-btn:hover .hamburger span {
     width: 3px;
     height: 20px;
-    background: var(--accent-blue);
+    background: #50A4D4;
     opacity: 0.9;
 }
 
@@ -133,7 +133,7 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
     top: 0;
     right: -50%;
-    width: 10%;
+    width: 50%;
     height: 100vh;
     background: var(--primary-blue);
     color: white;
@@ -761,13 +761,18 @@ body::before {
     flex: 0 0 55%;
     padding: 1rem 1rem 1rem 1.5rem;
     background: transparent;
-    gap: 0.8rem;
+    gap: 1rem;
+    position: relative;
 }
 
 .about-content {
     max-width: 450px;
     color: white;
     flex: 1;
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
 .about-content h2 {
@@ -786,6 +791,7 @@ body::before {
     font-family: 'Figtree', sans-serif;
     color: rgba(255, 255, 255, 0.95);
     max-width: 400px;
+    flex: 1;
 }
 
 .about-image {
@@ -806,47 +812,33 @@ body::before {
     filter: brightness(1.1) contrast(1.05);
 }
 
-.learn-more {
+.bottom-controls {
     display: flex;
     align-items: center;
     gap: 2rem;
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+}
+
+.learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-bottom: 3rem;
-}
-
-.learn-more:hover {
-    transform: translateX(10px);
-}
-
-.learn-more-line {
-    width: 60px;
-    height: 3px;
-    background: white;
-    transition: all 0.3s ease;
-}
-
-.learn-more:hover .learn-more-line {
-    width: 80px;
-    background: #4a90e2;
-}
-
-.learn-more span {
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    background: transparent;
+    padding: 1rem 2rem;
+    border: none;
     font-family: 'Figtree', sans-serif;
-    transition: all 0.3s ease;
-    color: white;
-}
-
-.learn-more:hover span {
-    color: #4a90e2;
+    position: relative;
+    overflow: hidden;
 }
 
 .slider-dots {
-    display: flex;
+    display: inline-flex;
     gap: 0.8rem;
+    align-items: center;
 }
 
 .dot {
@@ -879,10 +871,12 @@ body::before {
     transition: all 0.3s ease;
     flex-shrink: 0;
     position: relative;
+    cursor: pointer;
 }
 
 .slider-nav:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: white;
+    color: black;
     border-color: white;
     transform: scale(1.05);
 }
@@ -1157,5 +1151,55 @@ body::before {
     .slider-dots {
         justify-content: center;
     }
+}
+
+.learn-more span {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Figtree', sans-serif;
+    color: #A1C9E7;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.learn-more span::after {
+    content: '';
+    margin-left: 0.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    color: #A1C9E7;
+}
+
+.learn-more:hover span::after {
+    content: ' >';
+    color: #030E1C;
+}
+
+.learn-more:hover span {
+    color: #030E1C;
+}
+
+.learn-more::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, #A1C9E7 0%, #A1C9E7 100%);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+    box-shadow: 0 0 10px rgba(42, 125, 172, 0.3);
+}
+
+.learn-more:hover::before {
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(42, 125, 172, 0.4);
+}
+
+.learn-more:hover {
+    transform: translateY(-3px);
 }
   
